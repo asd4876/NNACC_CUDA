@@ -206,7 +206,7 @@ void mlp::run_gpu(const double* input, double *output) {
 	CUDA_CHECK_RETURN(
 			cudaMemcpy(dev_input, input, sizeof(double) * input_length,
 					cudaMemcpyHostToDevice));
-	if (max_nodes_num < BLOCK_SIZE) {
+	if (max_nodes_num > BLOCK_SIZE) {
 
 		for (int i = 0; i < layers_num - 1; i++) {
 
